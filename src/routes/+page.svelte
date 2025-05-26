@@ -15,6 +15,10 @@
    ]
 </script>
 
+<svelte:head>
+   <title>jerrycanvas</title>
+</svelte:head>
+
 <scene.view>
    {#each houses as pos}
       <Scene.Sprite src="/house00.png" {...pos} size={1} angle={0} }>
