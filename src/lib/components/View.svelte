@@ -1,4 +1,5 @@
 <script lang="ts">
+   import '$lib/assets/view.css'
    import { type Scene } from "$lib/classes/Scene.svelte.js";
    import { View } from "../classes/View.svelte.js"
    import { onMount, type Snippet } from 'svelte'

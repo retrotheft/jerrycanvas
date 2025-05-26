@@ -1,4 +1,5 @@
 <script lang="ts">
+   import '$lib/assets/scene.css'
    import { type Scene } from '../classes/Scene.svelte.js'
    import { type Snippet } from 'svelte'
 

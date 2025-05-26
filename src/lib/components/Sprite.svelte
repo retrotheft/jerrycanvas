@@ -1,4 +1,5 @@
 <script lang="ts">
+   import '$lib/assets/sprite.css'
    import { style } from '../functions/style.js'
    import { type Snippet } from 'svelte'
 
