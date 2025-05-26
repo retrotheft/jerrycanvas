@@ -1,8 +1,8 @@
 <script lang="ts">
-   import { World } from '$lib/classes/World.svelte.js'
+   import { Scene } from '$lib/classes/Scene.svelte.js'
 
-   const world = new World({ width: 1500, height: 500 })
-   world.backgroundUrl = '/bg_green_1000.png'
+   const scene = new Scene({ width: 1500, height: 500 })
+   scene.backgroundUrl = '/bg_green_1000.png'
 
    const houses = [
       { x: 50, y: 50 },
@@ -15,13 +15,13 @@
    ]
 </script>
 
-<world.viewport>
+<scene.view>
    {#each houses as pos}
-      <World.Sprite src="/house00.png" {...pos} size={1} angle={0} }>
+      <Scene.Sprite src="/house00.png" {...pos} size={1} angle={0} }>
          <span>{pos.x}, {pos.y}</span>
-      </World.Sprite>
+      </Scene.Sprite>
    {/each}
-</world.viewport>
+</scene.view>
 
 <style>
    span {

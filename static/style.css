@@ -17,3 +17,10 @@ div#app {
    /* align-items: center;
    justify-content: center; */
 }
+
+div#view {
+   user-select: none;
+   width: 50vw;
+   height: 50vh;
+   border: 1px solid white;
+}

@@ -1,1 +1,1 @@
-export * from './classes/World.svelte.js'
+export * from './classes/Scene.svelte.js'

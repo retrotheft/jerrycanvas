@@ -8,10 +8,10 @@ It's really easy to set up. Just do the following:
 
 ```svelte
 <script>
-   import { World } from 'jerrycanvas'
+   import { scene } from 'jerrycanvas'
 
-   const world = new World({ width: 1000, height: 1000 })
-   world.backgroundUrl = '/bg_green_1000.png'
+   const scene = new scene({ width: 1000, height: 1000 })
+   scene.backgroundUrl = '/bg_green_1000.png'
 
    const sprites = [
       { src="/sprite1.png" x: 50, y: 50, size: 1, angle: 0 },
@@ -19,9 +19,9 @@ It's really easy to set up. Just do the following:
    ]
 </script>
 
-<world.viewport>
+<scene.view>
    {#each sprites as sprite}
-      <World.Sprite {...sprite} />
+      <scene.Sprite {...sprite} />
    {/each}
-</world.viewport>
+</scene.view>
 ```

@@ -1,6 +1,6 @@
 import { withProps } from "$lib/functions/withProps.js"
-import ViewportComponent from '../components/Viewport.svelte'
-import WorldComponent from '../components/World.svelte'
+import ViewComponent from '../components/View.svelte'
+import sceneComponent from '../components/Scene.svelte'
 import SpriteComponent from '../components/Sprite.svelte'
 
 type Dimensions = {
@@ -8,7 +8,7 @@ type Dimensions = {
    height: number
 }
 
-export class World {
+export class Scene {
    public backgroundUrl = $state('')
    public dimensions = $state<Dimensions>({
       width: 0,
@@ -19,12 +19,12 @@ export class World {
       this.dimensions = dimensions
    }
 
-   get viewport() {
-      return withProps(ViewportComponent, { world: this })
+   get view() {
+      return withProps(ViewComponent, { scene: this })
    }
 
    get svelte() {
-      return withProps(WorldComponent, { world: this })
+      return withProps(sceneComponent, { scene: this })
    }
 
    get width() {

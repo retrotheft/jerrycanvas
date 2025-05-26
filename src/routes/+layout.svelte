@@ -1,6 +1,7 @@
 <script lang="ts">
-   import '$lib/assets/app.css'
-   import '$lib/assets/style.css'
+   import '$lib/assets/view.css'
+   import '$lib/assets/sprite.css'
+   import '$lib/assets/scene.css'
 </script>
 
 <svelte:head>

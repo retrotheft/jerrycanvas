@@ -1,0 +1,9 @@
+div#scene {
+   position: absolute;
+   background-color: seagreen;
+   background-size: calc(var(--width) * var(--scale));
+   background-repeat: repeat;
+   width: calc(var(--width) * var(--scale));
+   height: calc(var(--height) * var(--scale));
+   transform: translate(var(--pan-x), var(--pan-y));
+}

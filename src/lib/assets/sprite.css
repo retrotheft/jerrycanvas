@@ -1,0 +1,44 @@
+button.sprite {
+   all: unset;
+   position: absolute;
+   transform-origin: center;
+   --offset: calc(50% * var(--size, 1) * (var(--scale) - 1));
+   transform:
+      translate(calc(var(--x, 0) * var(--scale) * 1px - 50%), calc(var(--y, 0) * var(--scale) * 1px - 50%))
+      /* Line above does both operations below: keeps sprite centered on coordinates and positioned in scene */
+      /* translate(calc(var(--x, 0) * var(--scale) * 1px - 50% * var(--size)), calc(var(--y, 0) * var(--scale) * 1px - 50% * var(--size)))
+      translate(calc(-50% * (1 - var(--size))), calc(-50% * (1 - var(--size)))) */
+      scale(calc(var(--size, 1) * var(--scale) * var(--local-scale, 1)))
+      rotate(calc(var(--angle, 0) * 1deg));
+   display: grid;
+
+   &:hover {
+      --local-scale: 1.25;
+      animation: scale-up 0.2s ease forwards;
+      cursor: pointer;
+   }
+
+   &:not(:hover) {
+      animation: scale-down 0.2s ease forwards;
+   }
+
+   img {
+      object-position: center;
+   }
+}
+
+@property --local-scale {
+   initial-value: 1;
+   inherits: false;
+   syntax: '<number>';
+}
+
+@keyframes scale-up {
+   from { --local-scale: 1; }
+   to { --local-scale: 1.25; }
+}
+
+@keyframes scale-down {
+   from { --local-scale: 1.25; }
+   to { --local-scale: 1; }
+}
