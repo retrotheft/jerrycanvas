@@ -8,7 +8,7 @@ It's really easy to set up. Just do the following:
 
 ```svelte
 <script>
-   import { World } from '$lib/classes/World.svelte.js'
+   import { World } from 'jerrycanvas'
 
    const world = new World({ width: 1000, height: 1000 })
    world.backgroundUrl = '/bg_green_1000.png'
