@@ -6,7 +6,7 @@ For those times you should probably be using canvas, but it's too much hassle.
 
 - [![Svelte](https://img.shields.io/badge/Svelte-5.29-FF3E00?logo=svelte)](https://www.npmjs.com/package/svelte?activeTab=versions)
 
-Ever almost reach for HTML Canvas, only to hesitate because you didn't want to deal with changing all your rendering logic? OR have to write a for loop with collision detection to salvage your interactivity?
+Ever almost reach for HTML Canvas, only to hesitate because you didn't want to deal with changing all your rendering logic? Or have to write a for loop with collision detection to salvage your interactivity?
 
 **Jerrycanvas** is an HTML element that behaves a bit like a canvas. Position elements by their x and y coordinates, zoom and pan, interact with things.
 
@@ -46,7 +46,7 @@ The code below contains everything you need to use Jerrycanvas. Keep reading for
 
 ## A Scene With a View
 
-Jerrycanvas only exports a single class: Scene. This is where you define the thing that you want to display. You must provide dimensions to instantiate it, and you can optionally provide a background image url.
+You can access all of Jerrycanvas' functionality with a single class: `Scene`. This is where you define the thing that you want to display. You must provide dimensions to instantiate it, and you can optionally provide a background image url.
 
 To render your scene, you can use Svelte's dot notation and get the `view` component from your scene instance. Note that this is an instance getter (hence the lowercase) since it needs information about your scene to function.
 
@@ -56,19 +56,40 @@ To render your scene, you can use Svelte's dot notation and get the `view` compo
 </scene.view>
 ````
 
-To style your scene element further, use `div.jc-scene`.
+To style your scene element in CSS, use `div.jc-scene`.
+
+The scene div has some basic css already set. It's located in `lib/assets/scene.css`.
+
+For the most part, you probably want to style the viewport rather than the scene. But if you do, be careful to to override any of the default css: `position`, `transform`, `background-size`, `width`, `height`.
 
 ## Styling the Viewport
 
-Use `div.jc-view`. to target the viewport element.
+Use `div.jc-view` to target the viewport element. By default this element has `position: relative` and `overflow: hidden` set on it.
 
-Jerrycanvas will lock your viewport's max-width and max-height to your scene's dimensions. You're free to use CSS to style the Viewport element however you like from there. So for instance, if you set your viewport to `50vw` and `50vh`, then the viewport will be 50% of your window's width and height until that would make it larger than your scene.
+Jerrycanvas will lock your viewport's `max-width` and `max-height` to your scene's dimensions. You're free to use CSS to style the viewport div however you like from there. So for instance, if you set your viewport to `50vw` and `50vh`, then the viewport will be 50% of your window's width and height until that would make it larger than your scene.
 
-More info on panning and zooming is further below.
+## View Options
+
+If you want to control the max zoom allowed, or the zoom dampening value, you can pass an options prop to `scene.view`:
+
+```svelte
+<script lang="ts">
+   import type { Options } from 'jerrycanvas'
+
+   const options = $state<Options>({
+      zoomMax: 3,
+      zoomDampen: 100
+   })
+</script>
+
+<scene.view {options} />
+```
+
+Note that the minimum zoom allowed is controlled internally and cannot be changed. This is to prevent your scene from become smaller than the viewport.
 
 ## Sprites
 
-Jerrycanvas also comes with a convenient Sprite component that you can use. You can render a sprite again using Svelte's dot notation, however this time notice that it's uppercase: `Scene.Sprite` is a static property on the Scene class. This is because the sprite does not require any information about your scene instance.
+Jerrycanvas also comes with a convenient Sprite component. You can render a sprite again using Svelte's dot notation, however this time notice that it's uppercase: `Scene.Sprite` is a static property on the Scene class. This is because the sprite does not require any information about your scene instance.
 
 ```svelte
 <Scene.Sprite />
@@ -107,6 +128,16 @@ Or, if you have an array of sprites you can just loop over them and destructure 
 ```
 
 You can have other properties in the object that you destructure. The Sprite component will just ignore them.
+
+**Important**: Sprites are positioned with their coordinates at their center, not their top left corner.
+
+## Sprite Interactivity
+
+The Sprite element is a button, and as such you can pass it an `onclick` handler. Use this for simple interactivity.
+
+If you require more sophisticated interactivity, take a look at the Sprite component (it's super simple) and create your own. It's located in `lib/components/Sprite.svelte`.
+
+The Sprite CSS is a bit more complex, but manageable. You can use it with `button.jc-sprite`. It's located in `lib/assets/sprite.css`.
 
 ## Sprite Children
 
