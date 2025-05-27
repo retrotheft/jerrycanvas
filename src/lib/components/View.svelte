@@ -4,7 +4,7 @@
    import { View } from "../classes/View.svelte.js"
    import { onMount, type Snippet } from 'svelte'
 
-   let { scene, children, debug }: { scene: Scene, children?: Snippet, debug?: Snippet<[View]> } = $props()
+   let { scene, dampen, options, children, debug }: { scene: Scene, dampen?: number, options: any, children?: Snippet, debug?: Snippet<[View]> } = $props()
 
    const view = new View()
 
@@ -69,10 +69,17 @@
    onMount(() => {
       isReady = true
    })
+
+   $effect(() => {
+      if (options.zoomMax) view.zoomMax = options.zoomMax
+      if (options.zoomDampen) view.zoomDampen = options.zoomDampen
+   })
 </script>
 
 <svelte:window {onmouseup} />
 
+{dampen}
+{JSON.stringify(options)}
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div role="application" class="jc-view" use:setup {@attach setStyles} {onmousemove} {onmouseup} {onmousedown} {onwheel} {onmouseleave}>
    {#if isReady}
