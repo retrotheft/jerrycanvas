@@ -14,21 +14,13 @@
       { x: 50, y: 150 },
       { x: 50, y: 250 },
    ]
-
-   const options = $state<Options>({
-      zoomMax: 3,
-      zoomDampen: 100
-   })
 </script>
 
 <svelte:head>
    <title>jerrycanvas</title>
 </svelte:head>
 
-<input type="range" min="1" max="5" step="0.1" bind:value={options.zoomMax} />
-<input type="range" min="1" max="500" bind:value={options.zoomDampen} />
-
-<scene.view {options}>
+<scene.view>
    {#snippet debug(view: View)}
       <ul>
          <li>Zoom: {view.zoom.toFixed(1)}</li>

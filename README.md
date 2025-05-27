@@ -48,6 +48,13 @@ The code below contains everything you need to use Jerrycanvas. Keep reading for
 
 You can access all of Jerrycanvas' functionality with a single class: `Scene`. This is where you define the thing that you want to display. You must provide dimensions to instantiate it, and you can optionally provide a background image url.
 
+```ts
+import { Scene } from 'jerrycanvas'
+
+const scene = new Scene({ width: 1000, height: 1000 })
+scene.backgroundUrl = '/bg_green_1000.png'
+```
+
 To render your scene, you can use Svelte's dot notation and get the `view` component from your scene instance. Note that this is an instance getter (hence the lowercase) since it needs information about your scene to function.
 
 ```svelte
@@ -177,7 +184,7 @@ The scene view will respond to window resizing and update its zoom and pan if ne
 
 If you would like to display debug info, you can create a debug snippet. The viewport renders this if available and passes the view instance to it.
 
-**Important:** `scene.view` and the `view` passed to the debug snippet are NOT the same object. `scene.view` is a Svelte component, while `view` is an instance of the `View` class that contains its pan, zoom, and scale information.
+**Important:** `scene.view` and the `view` passed to the debug snippet are NOT the same object. `scene.view` is a Svelte component, while `view` is an instance of the `View` class that contains its pan, zoom, and scale information. The scene.view component creates an instance of the View class when it instantiates.
 
 You can import the `View` class to get type information on what's available to display.
 
@@ -201,7 +208,7 @@ import { type View } from 'jerrycanvas'
 </scene.view>
 ```
 
-You can style the debug element using the `div.jc-view-debug`. It is set to `position: absolute` by default. Additionally, like Sprites, the View element is set to `display: grid` so you can use any combination of `top`, `right`, `down`, `left`, and `inset`, as well as `align-self` and `justify-self`, to position your debug snippet. Here's an example:
+You can style the debug element using the `div.jc-view-debug`. It is set to `position: absolute` by default. Additionally, like Sprites, the View element is set to `display: grid` so you can use any combination of `top`, `right`, `down`, `left`, and `inset`, as well as `align-self` and `justify-self`, to position your debug snippet.
 
 ```css
 div.jc-view-debug {
