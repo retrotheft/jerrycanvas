@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.3] - 2025-05-27
+
+- fixed background-image to only apply to scene if present
+
 ## [1.0.2] - 2025-05-27
 
 - added `display: grid` to `jc-view`

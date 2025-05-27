@@ -3,9 +3,15 @@
    import { type Snippet } from 'svelte'
 
    let { scene, children }: { scene: Scene, children?: Snippet } = $props()
+
+   function setStyles(element: HTMLDivElement) {
+      element.style.setProperty('--width', scene.width + 'px')
+      element.style.setProperty('--height', scene.height + 'px')
+      if (scene.backgroundUrl) element.style.setProperty('background-image', `url(${scene.backgroundUrl})`)
+   }
 </script>
 
-<div class="jc-scene" style={`--width: ${scene.width}px; --height: ${scene.height}px; background-image: url('${scene.backgroundUrl}');`}>
+<div class="jc-scene" {@attach setStyles}>
    {@render children?.()}
 </div>
 
