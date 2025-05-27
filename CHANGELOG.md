@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.2] - 2025-05-27
+
+- added `display: grid` to `jc-view`
+
 ## [1.0.1] - 2025-05-27
 
 - removed css imports from components for Svelte Playground compatibility

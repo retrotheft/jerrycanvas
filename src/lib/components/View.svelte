@@ -94,6 +94,7 @@
    div.jc-view {
       position: relative;
       overflow: hidden;
+      display: grid;
    }
 
    div.jc-view-debug {

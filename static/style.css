@@ -17,7 +17,6 @@ div#app {
 }
 
 div.jc-view {
-   display: grid;
    user-select: none;
    width: 50vw;
    height: 50vh;
