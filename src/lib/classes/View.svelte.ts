@@ -26,7 +26,10 @@ export class View {
    calculateMaxPan(rect: Rect, scene: Scene) {
       const scaledWidth = scene.width * this.zoom
       const scaledHeight = scene.height * this.zoom
-      return { x: scaledWidth - rect.width, y: scaledHeight - rect.height }
+      return {
+         x: Math.max(0, scaledWidth - rect.width),
+         y: Math.max(0, scaledHeight - rect.height)
+      }
    }
 
    adjustPan(x: number, y: number, rect: Rect, scene: Scene) {
@@ -43,7 +46,6 @@ export class View {
       this.zoom = Math.min(this.zoomMax, Math.max(this.zoomMin, this.zoom + deltaY / this.zoomDampen))
       const scaleRatio = this.zoom / oldZoom
 
-      // could potentially move this into setPan or adjustPan with some tweaking
       const maxPan = this.calculateMaxPan(rect, scene)
 
       const p = {
