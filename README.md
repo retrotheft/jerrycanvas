@@ -2,6 +2,8 @@
 
 For those times you should probably be using canvas, but it's too much hassle.
 
+[Try it out on the Svelte Playground!](https://svelte.dev/playground/c061af3767814fccb3c1e27f65c24938?version=5.33.3)
+
 ## Requirements
 
 - [![Svelte](https://img.shields.io/badge/Svelte-5.29-FF3E00?logo=svelte)](https://www.npmjs.com/package/svelte?activeTab=versions)
