@@ -74,7 +74,7 @@
 <svelte:window {onmouseup} />
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-<div role="application" id="view" use:setup {@attach setStyles} {onmousemove} {onmouseup} {onmousedown} {onwheel} {onmouseleave}>
+<div role="application" class="jc-view" use:setup {@attach setStyles} {onmousemove} {onmouseup} {onmousedown} {onwheel} {onmouseleave}>
    {@render debug?.()}
    {#if isReady}
       <scene.svelte>

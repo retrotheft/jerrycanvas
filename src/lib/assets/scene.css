@@ -1,4 +1,4 @@
-div#scene {
+div.jc-scene {
    position: absolute;
    background-size: calc(var(--width) * var(--scale));
    width: calc(var(--width) * var(--scale));

@@ -16,7 +16,7 @@ div#app {
    justify-content: center;
 }
 
-div#view {
+div.jc-view {
    user-select: none;
    width: 50vw;
    height: 50vh;

@@ -6,6 +6,6 @@
    let { scene, children }: { scene: Scene, children?: Snippet } = $props()
 </script>
 
-<div id="scene" style={`--width: ${scene.width}px; --height: ${scene.height}px; background-image: url('${scene.backgroundUrl}');`}>
+<div class="jc-scene" style={`--width: ${scene.width}px; --height: ${scene.height}px; background-image: url('${scene.backgroundUrl}');`}>
    {@render children?.()}
 </div>

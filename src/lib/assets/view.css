@@ -1,4 +1,4 @@
-div#view {
+div.jc-view {
    position: relative;
    overflow: hidden;
 }
