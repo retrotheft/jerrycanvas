@@ -14,19 +14,24 @@
       { x: 50, y: 150 },
       { x: 50, y: 250 },
    ]
+
+   const options = $state<Options>({
+      zoomInvert: true
+   })
 </script>
 
 <svelte:head>
    <title>jerrycanvas</title>
 </svelte:head>
 
-<scene.view>
+<scene.view {options}>
    {#snippet debug(view: View)}
       <ul>
          <li>Zoom: {view.zoom.toFixed(1)}</li>
          <li>Min Zoom Allowed: {view.zoomMin.toFixed(1)}</li>
          <li>Max Zoom Allowed: {view.zoomMax.toFixed(1)}</li>
          <li>Zoom Dampening: {view.zoomDampen.toFixed(1)}</li>
+         <li>Zoom Inverted: {view.zoomInvert}</li>
          <li>Pan: {view.pan.x.toFixed(1)}, {view.pan.y.toFixed(1)}</li>
          <li>Scale: {view.scale.toFixed(1)}</li>
          <li>Scene to View Ratio: {view.sceneToViewRatio.width.toFixed(1)}, {view.sceneToViewRatio.height.toFixed(1)}</li>

@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.4] - 2025-05-27
+
+- added `zoomInvert` option
+- called `preventDefault` in `onwheel` handler in `View.svelte`
+
 ## [1.0.3] - 2025-05-27
 
 - fixed background-image to only apply to scene if present

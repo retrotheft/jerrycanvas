@@ -16,6 +16,7 @@ export class View {
    public zoomMin = $derived(Math.max(this.sceneToViewRatio.width, this.sceneToViewRatio.height))
    public zoomMax = $state(2)
    public zoomDampen = $state(200)
+   public zoomInvert = $state(false)
    public pan = $state<Coords>({ x: 0, y: 0 })
    public scale = $state(1)
 
@@ -81,5 +82,6 @@ export class View {
 
 export type Options = {
    zoomMax?: number,
-   zoomDampen?: number
+   zoomDampen?: number,
+   zoomInvert?: boolean
 }

@@ -23,9 +23,10 @@
    const onmouseleave = (e: MouseEvent ) => {}
 
    function onwheel (event: WheelEvent) {
+      event.preventDefault()
       const rect = viewElement?.getBoundingClientRect()
       if (!rect) return
-      view.adjustZoom(event.deltaY, rect, scene)
+      view.adjustZoom(view.zoomInvert ? -event.deltaY : event.deltaY, rect, scene)
    }
 
    function onmousedown(event: MouseEvent) {
@@ -71,6 +72,7 @@
    $effect(() => {
       if (options?.zoomMax) view.zoomMax = options.zoomMax
       if (options?.zoomDampen) view.zoomDampen = options.zoomDampen
+      if (options?.zoomInvert) view.zoomInvert = options.zoomInvert
    })
 </script>
 

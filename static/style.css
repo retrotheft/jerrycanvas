@@ -20,6 +20,7 @@ div.jc-view {
    user-select: none;
    width: 50vw;
    height: 50vh;
+   min-height: 300px;
    border: 1px solid white;
 }
 

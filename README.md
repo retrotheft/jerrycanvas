@@ -87,7 +87,8 @@ If you want to control the max zoom allowed, or the zoom dampening value, you ca
 
    const options = $state<Options>({
       zoomMax: 3,
-      zoomDampen: 100
+      zoomDampen: 100,
+      zoomInvert: true
    })
 </script>
 
