@@ -1,10 +1,9 @@
 <script lang="ts">
-   import '$lib/assets/view.css'
    import { type Scene } from "$lib/classes/Scene.svelte.js";
    import { type Options, View } from "../classes/View.svelte.js"
    import { onMount, type Snippet } from 'svelte'
 
-   let { scene, options, children, debug }: { scene: Scene, options: Options, children?: Snippet, debug?: Snippet<[View]> } = $props()
+   let { scene, options, children, debug }: { scene: Scene, options?: Options, children?: Snippet, debug?: Snippet<[View]> } = $props()
 
    const view = new View()
 
@@ -70,8 +69,8 @@
    })
 
    $effect(() => {
-      if (options.zoomMax) view.zoomMax = options.zoomMax
-      if (options.zoomDampen) view.zoomDampen = options.zoomDampen
+      if (options?.zoomMax) view.zoomMax = options.zoomMax
+      if (options?.zoomDampen) view.zoomDampen = options.zoomDampen
    })
 </script>
 
@@ -84,7 +83,20 @@
          {@render children?.()}
       </scene.svelte>
    {/if}
-   <div class="jc-view-debug">
-      {@render debug?.(view)}
-   </div>
+   {#if debug}
+      <div class="jc-view-debug">
+         {@render debug?.(view)}
+      </div>
+   {/if}
 </div>
+
+<style>
+   div.jc-view {
+      position: relative;
+      overflow: hidden;
+   }
+
+   div.jc-view-debug {
+      position: absolute;
+   }
+</style>

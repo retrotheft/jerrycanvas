@@ -1,6 +1,6 @@
 {
 	"name": "jerrycanvas",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -28,12 +28,12 @@
 		}
 	},
 	"peerDependencies": {
-		"svelte": "^5.0.0"
+		"svelte": "^5.2.9"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/package": "^2.0.0",
+		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"publint": "^0.3.2",
 		"svelte": "^5.0.0",
