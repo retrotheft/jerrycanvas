@@ -1,6 +1,6 @@
 <script lang="ts">
    import { Scene } from '$lib/classes/Scene.svelte.js'
-   import { type View } from '$lib/classes/View.svelte.js'
+   import type { Options, View } from '$lib/classes/View.svelte.js'
 
    const scene = new Scene({ width: 1500, height: 500 })
    scene.backgroundUrl = '/bg_green_1000.png'
@@ -15,8 +15,7 @@
       { x: 50, y: 250 },
    ]
 
-   let dampen = $state(50)
-   const options = $state({
+   const options = $state<Options>({
       zoomMax: 3,
       zoomDampen: 100
    })
@@ -26,11 +25,10 @@
    <title>jerrycanvas</title>
 </svelte:head>
 
-<input type="range" min="1" max="5" bind:value={options.zoomMax} />
+<input type="range" min="1" max="5" step="0.1" bind:value={options.zoomMax} />
 <input type="range" min="1" max="500" bind:value={options.zoomDampen} />
-<label>Dampen<input type="range" min="1" max="500" bind:value={dampen} /></label>
 
-<scene.view {dampen} {options}>
+<scene.view {options}>
    {#snippet debug(view: View)}
       <ul>
          <li>Zoom: {view.zoom.toFixed(1)}</li>

@@ -78,3 +78,8 @@ export class View {
       if (this.zoom > this.zoomMax) this.zoom = this.zoomMax
    }
 }
+
+export type Options = {
+   zoomMax?: number,
+   zoomDampen?: number
+}

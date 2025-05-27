@@ -1,10 +1,10 @@
 <script lang="ts">
    import '$lib/assets/view.css'
    import { type Scene } from "$lib/classes/Scene.svelte.js";
-   import { View } from "../classes/View.svelte.js"
+   import { type Options, View } from "../classes/View.svelte.js"
    import { onMount, type Snippet } from 'svelte'
 
-   let { scene, dampen, options, children, debug }: { scene: Scene, dampen?: number, options: any, children?: Snippet, debug?: Snippet<[View]> } = $props()
+   let { scene, options, children, debug }: { scene: Scene, options: Options, children?: Snippet, debug?: Snippet<[View]> } = $props()
 
    const view = new View()
 
@@ -57,7 +57,6 @@
    }
 
    function setStyles(element: HTMLDivElement) {
-      // untrack(() => updateScale(element, element.getBoundingClientRect()))
       element.style.setProperty('max-width', scene.width + 'px')
       element.style.setProperty('max-height', scene.height + 'px')
       element.style.setProperty('--pan-x', -view.pan.x + 'px')
@@ -78,8 +77,6 @@
 
 <svelte:window {onmouseup} />
 
-{dampen}
-{JSON.stringify(options)}
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div role="application" class="jc-view" use:setup {@attach setStyles} {onmousemove} {onmouseup} {onmousedown} {onwheel} {onmouseleave}>
    {#if isReady}
