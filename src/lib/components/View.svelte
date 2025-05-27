@@ -4,7 +4,7 @@
    import { View } from "../classes/View.svelte.js"
    import { onMount, type Snippet } from 'svelte'
 
-   let { scene, children, debug }: { scene: Scene, children?: Snippet, debug?: Snippet } = $props()
+   let { scene, children, debug }: { scene: Scene, children?: Snippet, debug?: Snippet<[View]> } = $props()
 
    const view = new View()
 
@@ -75,10 +75,12 @@
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <div role="application" class="jc-view" use:setup {@attach setStyles} {onmousemove} {onmouseup} {onmousedown} {onwheel} {onmouseleave}>
-   {@render debug?.()}
    {#if isReady}
       <scene.svelte>
          {@render children?.()}
       </scene.svelte>
    {/if}
+   <div class="jc-view-debug">
+      {@render debug?.(view)}
+   </div>
 </div>
